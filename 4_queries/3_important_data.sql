@@ -3,5 +3,5 @@ FROM assignments
 INNER JOIN assistance_requests ON assignment_id = assignments.id
 INNER JOIN teachers ON teachers.id = teacher_id
 INNER JOIN students ON students.id = student_id
-ORDER BY duration
+ORDER BY duration;
 
