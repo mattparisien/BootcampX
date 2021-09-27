@@ -8,15 +8,19 @@ const pool = new Pool({
   database: 'bootcampx'
 });
 
-pool.query(`
+const queryStr = `
   SELECT DISTINCT teachers.name as teacher, cohorts.name as cohorts
   FROM cohorts
   INNER JOIN students ON students.cohort_id = cohorts.id
   INNER JOIN assistance_requests ON student_id = students.id
   INNER JOIN teachers ON teachers.id = teacher_id
-  WHERE cohorts.name = '${userInput[0]}'
+  WHERE cohorts.name = $1
   ORDER BY teacher;
-`)
+`;
+
+const values = [`${userInput[0]}`];
+
+pool.query(queryStr, values)
 .then(res => {
   res.rows.forEach(ass_request => {
     console.log(`${ass_request.cohorts}: ${ass_request.teacher}`)
