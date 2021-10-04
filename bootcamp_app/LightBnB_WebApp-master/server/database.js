@@ -24,7 +24,7 @@ const getUserWithEmail = function (email) {
       return res.rows[0];
     })
     .catch((err) => {
-      console.log('error', err);
+      console.log("error", err);
     });
 
   return new Promise((resolve, reject) => {
@@ -40,22 +40,22 @@ exports.getUserWithEmail = getUserWithEmail;
  * @return {Promise<{}>} A promise to the user.
  */
 const getUserWithId = function (id) {
-  const text = 'SELECT * FROM users WHERE id = $1';
+  const text = "SELECT * FROM users WHERE id = $1";
   const values = [id];
 
-  const userById = pool.query(text, values)
-  .then((res) => {
-    return res.rows[0]
-  })
-  .catch((err) => {
-    console.log(err);
-  })
+  const userById = pool
+    .query(text, values)
+    .then((res) => {
+      return res.rows[0];
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
   return new Promise((resolve, reject) => {
-    resolve(userById)
-    reject(null)
-  })
-
+    resolve(userById);
+    reject(null);
+  });
 };
 exports.getUserWithId = getUserWithId;
 
@@ -85,8 +85,21 @@ exports.addUser = addUser;
  * @return {Promise<[{}]>} A promise to the reservations.
  */
 const getAllReservations = function (guest_id, limit = 10) {
-  return getAllProperties(null, 2);
+  const text = "SELECT * FROM reservations WHERE guest_id = $1 LIMIT $2";
+  const values = [guest_id, limit];
+  const allReservations = pool
+    .query(text, values)
+    .then((res) => {
+      console.log("hi");
+      return res.rows[0];
+    })
+    .catch((err) => console.log(err));
+
+  return new Promise((resolve, reject) => {
+    resolve(allReservations);
+  });
 };
+
 exports.getAllReservations = getAllReservations;
 
 /// Properties
@@ -103,7 +116,7 @@ const getAllProperties = function (options, limit = 10) {
     .then((result) => {
       return result.rows;
     })
-    .catch((err) => {});
+    .catch((err) => console.log);
 };
 exports.getAllProperties = getAllProperties;
 
