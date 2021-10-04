@@ -4,4 +4,9 @@ INNER JOIN students ON students.id = student_id
 INNER JOIN cohorts ON cohorts.id = cohort_id
 WHERE cohorts.name = 'FEB12';
 
+SELECT name
+FROM world
+WHERE name LIKE concat(name, '%City')
+
+
 
