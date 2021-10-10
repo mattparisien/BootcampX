@@ -112,18 +112,32 @@ exports.getAllReservations = getAllReservations;
  * @return {Promise<[{}]>}  A promise to the properties.
  */
 const getAllProperties = function (options, limit = 10) {
-  const text = `SELECT properties.id, title, cost_per_night, AVG(property_reviews.rating) as average_rating
-  FROM properties 
-  INNER JOIN property_reviews ON property_id = properties.id
-  WHERE city LIKE '%ancouv%'
-  AND property_reviews.rating >= 4
+
+  const queryParams = [];
+
+  let text = `
+    SELECT properties.*, avg(property_reviews.rating) as average_rating
+    FROM properties
+    JOIN property_reviews ON properties.id = property_id
+  `;
+
+  if (options.city) {
+    queryParams.push(`%${options.city}%`)
+    text += `WHERE city LIKE $${queryParams.length}`
+  }
+
+  queryParams.push(limit);
+  text += `
   GROUP BY properties.id
-  ORDER BY cost_per_night ASC
-  LIMIT $1;`;
+  ORDER BY cost_per_night
+  LIMIT $${queryParams.length};
+  `;
 
-  const values = [limit];
 
-  return pool.query(text, values)
+  console.log(text, queryParams);
+
+
+  return pool.query(text, queryParams)
   .then(res => res.rows)
   .catch(err => console.log(err))
 
