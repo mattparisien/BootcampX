@@ -154,6 +154,10 @@ const getAllProperties = function (options, limit = 10) {
     injectAndOperator = true;
   }
 
+  if (options.minimum_rating) {
+    text += `HAVING avg(property_reviews.rating) >= $${queryParams.length}`;
+  }
+
   queryParams.push(limit);
   text += `
   GROUP BY properties.id
