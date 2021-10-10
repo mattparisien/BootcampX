@@ -1,11 +1,11 @@
-const properties = require("./json/properties.json");
-const users = require("./json/users.json");
-const { Pool } = require("pg");
+const properties = require('./json/properties.json');
+const users = require('./json/users.json');
+const { Pool } = require('pg');
 const pool = new Pool({
-  user: "vagrant",
-  password: "123",
-  host: "localhost",
-  database: "lightbnb",
+  user: 'vagrant',
+  password: '123',
+  host: 'localhost',
+  database: 'lightbnb',
 });
 
 /// Users
@@ -16,15 +16,15 @@ const pool = new Pool({
  * @return {Promise<{}>} A promise to the user.
  */
 const getUserWithEmail = function (email) {
-  const text = "SELECT * FROM users WHERE email = $1";
+  const text = 'SELECT * FROM users WHERE email = $1';
   const values = [email];
   const user = pool
     .query(text, values)
-    .then((res) => {
+    .then(res => {
       return res.rows[0];
     })
-    .catch((err) => {
-      console.log("error", err);
+    .catch(err => {
+      console.log('error', err);
     });
 
   return new Promise((resolve, reject) => {
@@ -40,15 +40,15 @@ exports.getUserWithEmail = getUserWithEmail;
  * @return {Promise<{}>} A promise to the user.
  */
 const getUserWithId = function (id) {
-  const text = "SELECT * FROM users WHERE id = $1";
+  const text = 'SELECT * FROM users WHERE id = $1';
   const values = [id];
 
   const userById = pool
     .query(text, values)
-    .then((res) => {
+    .then(res => {
       return res.rows[0];
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
     });
 
@@ -66,10 +66,10 @@ exports.getUserWithId = getUserWithId;
  */
 const addUser = function (user) {
   const text =
-    "INSERT INTO users(name, email, password) VALUES($1, $2, $3) RETURNING *";
+    'INSERT INTO users(name, email, password) VALUES($1, $2, $3) RETURNING *';
   const values = [user.name, user.email, user.password];
 
-  const newUser = pool.query(text, values).then((res) => {});
+  const newUser = pool.query(text, values).then(res => {});
 
   return new Promise((resolve, reject) => {
     resolve(newUser);
@@ -98,8 +98,8 @@ const getAllReservations = function (guest_id, limit = 10) {
   const values = [guest_id, limit];
   return pool
     .query(text, values)
-    .then((res) => res.rows)
-    .catch((err) => console.log(err));
+    .then(res => res.rows)
+    .catch(err => console.log(err));
 };
 
 exports.getAllReservations = getAllReservations;
@@ -112,8 +112,11 @@ exports.getAllReservations = getAllReservations;
  * @param {*} limit The number of results to return.
  * @return {Promise<[{}]>}  A promise to the properties.
  */
+
 const getAllProperties = function (options, limit = 10) {
   const queryParams = [];
+
+  injectAndOperator = false;
 
   let text = `
     SELECT properties.*, avg(property_reviews.rating) as average_rating
@@ -124,21 +127,31 @@ const getAllProperties = function (options, limit = 10) {
   if (options.city) {
     queryParams.push(`%${options.city}%`);
     text += `WHERE city LIKE $${queryParams.length}`;
+    injectAndOperator = true;
   }
 
   if (options.owner_id) {
     queryParams.push(`${options.owner_id}`);
-    text += `WHERE properties.owner_id = $${queryParams.length}`;
+    injectAndOperator
+      ? (text += `AND WHERE properties.owner_id = $${queryParams.length}`)
+      : (text += `WHERE properties.owner_id = $${queryParams.length}`);
+    injectAndOperator = true;
   }
 
   if (options.mininum_price_per_night) {
     queryParams.push(`${options.minimum_price_per_night}`);
-    text += `WHERE properties.cost_per_night >= $${queryParams.length}`;
+    injectAndOperator
+      ? (text += `AND WHERE properties.cost_per_night >= $${queryParams.length}`)
+      : (text += `WHERE properties.cost_per_night >= $${queryParams.length}`);
+    injectAndOperator = true;
   }
 
   if (options.maximum_price_per_night) {
     queryParams.push(`${options.maximum_price_per_night}`);
-    text += `WHERE properties.cost_per_night <= $${queryParams.length}`;
+    injectAndOperator
+      ? (text += `AND WHERE properties.cost_per_night <= $${queryParams.length}`)
+      : (text += `WHERE properties.cost_per_night <= $${queryParams.length}`);
+    injectAndOperator = true;
   }
 
   queryParams.push(limit);
@@ -152,8 +165,8 @@ const getAllProperties = function (options, limit = 10) {
 
   return pool
     .query(text, queryParams)
-    .then((res) => res.rows)
-    .catch((err) => console.log(err));
+    .then(res => res.rows)
+    .catch(err => console.log(err));
 };
 exports.getAllProperties = getAllProperties;
 
@@ -200,7 +213,7 @@ const addProperty = function (property) {
     property.city,
     property.province,
     property.post_code,
-    "true",
+    'true',
   ];
 
   return pool.query(text, values).then(res => res.rows);
