@@ -85,19 +85,20 @@ exports.addUser = addUser;
  * @return {Promise<[{}]>} A promise to the reservations.
  */
 const getAllReservations = function (guest_id, limit = 10) {
-  const text = "SELECT * FROM reservations WHERE guest_id = $1 LIMIT $2";
-  const values = [guest_id, limit];
-  const allReservations = pool
-    .query(text, values)
-    .then((res) => {
-      console.log("hi");
-      return res.rows[0];
-    })
-    .catch((err) => console.log(err));
+  const text = `
+    SELECT properties.*, reservations.*, AVG(rating) as average_rating
+    FROM reservations
+    INNER JOIN properties ON reservations.property_id = properties.id
+    INNER JOIN property_reviews ON properties.id = property_reviews.property_id
+    WHERE reservations.guest_id = $1
+    GROUP BY properties.id, reservations.id
+    LIMIT $2
+  ;`;
 
-  return new Promise((resolve, reject) => {
-    resolve(allReservations);
-  });
+  const values = [guest_id, limit];
+  return pool.query(text, values)
+  .then(res => res.rows)
+  .catch(err => console.log(err))
 };
 
 exports.getAllReservations = getAllReservations;
@@ -111,12 +112,21 @@ exports.getAllReservations = getAllReservations;
  * @return {Promise<[{}]>}  A promise to the properties.
  */
 const getAllProperties = function (options, limit = 10) {
-  return pool
-    .query("SELECT * FROM properties LIMIT $1", [limit])
-    .then((result) => {
-      return result.rows;
-    })
-    .catch((err) => console.log);
+  const text = `SELECT properties.id, title, cost_per_night, AVG(property_reviews.rating) as average_rating
+  FROM properties 
+  INNER JOIN property_reviews ON property_id = properties.id
+  WHERE city LIKE '%ancouv%'
+  AND property_reviews.rating >= 4
+  GROUP BY properties.id
+  ORDER BY cost_per_night ASC
+  LIMIT $1;`;
+
+  const values = [limit];
+
+  return pool.query(text, values)
+  .then(res => res.rows)
+  .catch(err => console.log(err))
+
 };
 exports.getAllProperties = getAllProperties;
 
