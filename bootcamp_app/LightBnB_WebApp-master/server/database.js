@@ -1,11 +1,11 @@
-const properties = require('./json/properties.json');
-const users = require('./json/users.json');
-const { Pool } = require('pg');
+const properties = require("./json/properties.json");
+const users = require("./json/users.json");
+const { Pool } = require("pg");
 const pool = new Pool({
-  user: 'vagrant',
-  password: '123',
-  host: 'localhost',
-  database: 'lightbnb',
+  user: "vagrant",
+  password: "123",
+  host: "localhost",
+  database: "lightbnb",
 });
 
 /// Users
@@ -16,7 +16,7 @@ const pool = new Pool({
  * @return {Promise<{}>} A promise to the user.
  */
 const getUserWithEmail = function (email) {
-  const text = 'SELECT * FROM users WHERE email = $1';
+  const text = "SELECT * FROM users WHERE email = $1";
   const values = [email];
   const user = pool
     .query(text, values)
@@ -24,7 +24,7 @@ const getUserWithEmail = function (email) {
       return res.rows[0];
     })
     .catch(err => {
-      console.log('error', err);
+      console.log("error", err);
     });
 
   return new Promise((resolve, reject) => {
@@ -40,7 +40,7 @@ exports.getUserWithEmail = getUserWithEmail;
  * @return {Promise<{}>} A promise to the user.
  */
 const getUserWithId = function (id) {
-  const text = 'SELECT * FROM users WHERE id = $1';
+  const text = "SELECT * FROM users WHERE id = $1";
   const values = [id];
 
   const userById = pool
@@ -66,7 +66,7 @@ exports.getUserWithId = getUserWithId;
  */
 const addUser = function (user) {
   const text =
-    'INSERT INTO users(name, email, password) VALUES($1, $2, $3) RETURNING *';
+    "INSERT INTO users(name, email, password) VALUES($1, $2, $3) RETURNING *";
   const values = [user.name, user.email, user.password];
 
   const newUser = pool.query(text, values).then(res => {});
@@ -217,9 +217,31 @@ const addProperty = function (property) {
     property.city,
     property.province,
     property.post_code,
-    'true',
+    "true",
   ];
 
   return pool.query(text, values).then(res => res.rows);
 };
 exports.addProperty = addProperty;
+
+const addReservation = function (reservation) {
+  /*
+   * Adds a reservation from a specific user to the database
+   */
+  return pool
+    .query(
+      `
+    INSERT INTO reservations (start_date, end_date, property_id, guest_id)
+    VALUES ($1, $2, $3, $4) RETURNING *;
+  `,
+      [
+        reservation.start_date,
+        reservation.end_date,
+        reservation.property_id,
+        reservation.guest_id,
+      ]
+    )
+    .then(res => res.rows[0]);
+};
+
+exports.addReservation = addReservation;
