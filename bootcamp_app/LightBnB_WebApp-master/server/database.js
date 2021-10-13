@@ -267,6 +267,26 @@ const getUpcomingReservations = function (guest_id, limit = 10) {
   return pool.query(text, values).then(res => res.rows);
 };
 
+exports.getUpcomingReservations = getUpcomingReservations;
+
+const getIndividualReservation = function (reservationId) {
+  const text = `
+  SELECT properties.*, reservations.*, avg(rating) as average_rating
+  FROM reservations
+  JOIN properties ON reservations.property_id = properties.id
+  JOIN property_reviews ON properties.id = property_reviews.property_id 
+  WHERE reservations.id = $1
+  GROUP BY properties.id, reservations.id
+  ORDER BY reservations.start_date
+  `;
+
+  const values = [reservationId];
+
+  pool.query(text, values).then(res => res.rows);
+};
+
+exports.getIndividualReservation = getIndividualReservation;
+
 //
 //  Updates an existing reservation with new information
 //
@@ -275,4 +295,13 @@ const updateReservation = function (reservationId, newReservationData) {};
 //
 //  Deletes an existing reservation
 //
-const deleteReservation = function (reservationId) {};
+const deleteReservation = function (reservationId) {
+  const text = [reservationId];
+  const values = `DELETE FROM reservations WHERE id = $1`;
+  return pool
+    .query(text, values)
+    .then(() => console.log("Successfully deleted!"))
+    .catch(() => console.error(err));
+};
+
+exports.deleteReservation = deleteReservation;

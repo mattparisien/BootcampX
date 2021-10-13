@@ -39,6 +39,17 @@ module.exports = function (router, database) {
       });
   });
 
+  router.get("/reservations/:reservation_id", (req, res) => {
+    const reservationId = req.params.reservation_id;
+    database
+      .getIndividualReservation(reservationId)
+      .then(reservation => res.send(reservation))
+      .catch(e => {
+        console.error(e);
+        res.send(e);
+      });
+  });
+
   router.post("/properties", (req, res) => {
     const userId = req.session.userId;
     database
@@ -65,6 +76,21 @@ module.exports = function (router, database) {
           res.send(e);
         });
     }
+  });
+
+  router.post("/reservations/:reservationId", (req, res) => {
+    const reservationId = req.params.reservationId;
+    database
+      .updateReservation({ reservation_id: reservationId, ...req.body })
+      .then(reservation => {
+        res.send(reservation);
+      });
+  });
+
+  // delete a reservation
+  router.delete("/reservations/:reservationId", (req, res) => {
+    const reservationId = req.params.reservationId;
+    database.deleteReservation(reservationId);
   });
 
   return router;

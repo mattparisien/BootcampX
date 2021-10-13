@@ -67,3 +67,17 @@ function getUpcomingReservations() {
     url,
   });
 }
+
+function getIndividualReservation(reservationId) {
+  let url = `/api/reservations/${reservationId}`;
+  return $.ajax({
+    url,
+  });
+}
+
+const deleteReservation = function (data) {
+  return $.ajax({
+    method: "DELETE",
+    url: `/api/reservations/${data.reservation_id}`,
+  });
+};

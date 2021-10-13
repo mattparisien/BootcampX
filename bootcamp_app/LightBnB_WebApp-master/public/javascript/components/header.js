@@ -46,7 +46,7 @@ $(() => {
 
   $("header").on("click", ".my_reservations_button", function () {
     propertyListings.clearListings();
-    getFulfilledReservations()
+    getUpcomingReservations()
       .then(function (json) {
         propertyListings.addProperties(json.reservations, { upcoming: false });
         getUpcomingReservations().then(json => {
