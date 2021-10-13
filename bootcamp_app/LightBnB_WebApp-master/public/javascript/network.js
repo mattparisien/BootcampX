@@ -60,3 +60,10 @@ const submitReservation = function (data) {
     data,
   });
 };
+
+function getUpcomingReservations() {
+  let url = "/api/reservations/upcoming";
+  return $.ajax({
+    url,
+  });
+}
