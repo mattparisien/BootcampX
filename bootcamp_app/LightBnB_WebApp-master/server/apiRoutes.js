@@ -24,6 +24,21 @@ module.exports = function (router, database) {
       });
   });
 
+  router.get("/reservations/upcoming", (req, res) => {
+    const userId = req.session.userId;
+    if (!userId) {
+      res.error("💩");
+      return;
+    }
+    database
+      .getUpcomingReservations(userId)
+      .then(reservations => res.send({ reservations }))
+      .catch(e => {
+        console.error(e);
+        res.send(e);
+      });
+  });
+
   router.post("/properties", (req, res) => {
     const userId = req.session.userId;
     database
