@@ -67,6 +67,17 @@
     }
   }
 
+  .review_details {
+    font-weight: 700;
+    color: green;
+    transition: all 300ms ease-in-out;
+  }
+
+  .review_details:hover {
+    color: blue;
+    cursor: pointer;
+  }
+
   .reserve-button {
     order: 4;
     width: 100%;

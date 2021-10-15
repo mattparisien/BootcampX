@@ -91,7 +91,9 @@ const getFulfilledReservations = function (guest_id, limit = 10) {
     INNER JOIN properties ON reservations.property_id = properties.id
     INNER JOIN property_reviews ON properties.id = property_reviews.property_id
     WHERE reservations.guest_id = $1
+    AND reservations.end_date < now()::date
     GROUP BY properties.id, reservations.id
+    ORDER BY reservations.start_date
     LIMIT $2
   ;`;
 
@@ -119,9 +121,9 @@ const getAllProperties = function (options, limit = 10) {
   injectAndOperator = false;
 
   let text = `
-    SELECT properties.*, avg(property_reviews.rating) as average_rating
+    SELECT properties.*, avg(property_reviews.rating) as average_rating, count(property_reviews.rating) as review_count
     FROM properties
-    JOIN property_reviews ON properties.id = property_id
+    INNER JOIN property_reviews ON properties.id = property_id
   `;
 
   if (options.city) {
