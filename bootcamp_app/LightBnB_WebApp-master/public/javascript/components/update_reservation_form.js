@@ -156,6 +156,8 @@ $(() => {
     </form>
   `);
 
+  window.$updateReservationForm = $updateReservationForm;
+
   $updateReservationForm.on("submit", function (event) {
     let errorMessage = "";
     let startDate;
@@ -229,6 +231,4 @@ $(() => {
       views_manager.show("updateReservation", dataObj);
     }
   });
-
-  window.$updateReservationForm = $updateReservationForm;
 });

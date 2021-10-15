@@ -78,6 +78,6 @@ function getIndividualReservation(reservationId) {
 const deleteReservation = function (data) {
   return $.ajax({
     method: "DELETE",
-    url: `/api/reservations/${data.reservation_id}`,
+    url: `/api/reservations/${data}`,
   });
 };

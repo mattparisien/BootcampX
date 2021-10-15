@@ -30,8 +30,8 @@ $(() => {
             }/night</div>
             ${
               isReservation.upcoming
-                ? `<button id="update-property-${property.id} class="update-button">Update</button>
-                <button id="delete-property-${property.id} class="delete-button">Delete</button>
+                ? `<button id="update-property-${property.id}" class="update-button">Update</button>
+                <button id="delete-property-${property.id}" class="delete-button">Delete</button>
               `
                 : ``
             }
