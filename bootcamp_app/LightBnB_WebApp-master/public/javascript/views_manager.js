@@ -55,6 +55,17 @@ $(() => {
       case "searchProperty":
         $searchPropertyForm.appendTo($main);
         break;
+      case "showReviews":
+        getReviewsByProperty(data).then(reviews =>
+          propertyReviews.addReviews(reviews)
+        );
+        $propertyReviews.appendTo($main);
+        break;
+      case "newReview":
+        dataTag = `<h4>${data}</h4>`;
+        $newReviewForm.appendTo($main);
+        $(dataTag).appendTo("#datatag");
+        break;
       case "logIn":
         $logInForm.appendTo($main);
         break;

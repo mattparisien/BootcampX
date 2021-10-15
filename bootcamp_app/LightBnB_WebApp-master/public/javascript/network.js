@@ -96,3 +96,19 @@ const getReviewsByProperty = function (propertyId) {
     url,
   });
 };
+
+const submitReview = function (data) {
+  return $.ajax({
+    method: "POST",
+    url: `api/reviews/${data.reservationId}`,
+    data,
+  });
+};
+
+const submitReview = function (data) {
+  return $.ajax({
+    method: "POST",
+    url: `api/reviews/${data.reservationId}`,
+    data,
+  });
+};

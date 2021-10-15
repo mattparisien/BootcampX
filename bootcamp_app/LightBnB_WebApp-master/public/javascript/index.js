@@ -8,7 +8,7 @@ $(() => {
     });
     $(".review_details").on("click", function () {
       const idData = $(this).attr("id").substring(15);
-      console.log(idData);
+      views_manager.show("showReviews", idData);
     });
   });
 });
