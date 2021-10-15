@@ -3,7 +3,22 @@ $fontlight: "Apercu Light";
 $fontreg: "Apercu Regular";
 $fontmed: "Apercu Medium";
 $black: rgb(24, 24, 24);
-$cream: rgb(250, 249, 234);
+$grey: rgb(213, 213, 213);
+$cream: rgb(247, 245, 239);
+
+body,
+main {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+main {
+  background-color: $cream;
+  height: 100%;
+}
 
 h1,
 h2,
@@ -12,6 +27,11 @@ a,
 button,
 footer {
   font-family: $fontmed;
+}
+
+button,
+a {
+  cursor: pointer;
 }
 
 p,

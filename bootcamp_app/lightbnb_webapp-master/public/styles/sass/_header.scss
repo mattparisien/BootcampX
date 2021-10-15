@@ -1,5 +1,23 @@
+@import "global";
+
 .page-header {
+  padding: 0em 1em;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: $cream;
+  border-bottom: 1px solid black;
+
   &__user-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    a {
+      font-family: "Anton";
+      text-transform: uppercase;
+      font-size: 2rem;
+    }
+
     ul {
       list-style: none;
       display: flex;
@@ -7,6 +25,10 @@
         padding: 0;
         margin: 0 10px;
         cursor: pointer;
+
+        &:last-of-type {
+          font-weight: 800;
+        }
       }
     }
   }

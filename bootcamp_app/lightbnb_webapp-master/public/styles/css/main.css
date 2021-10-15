@@ -1,3 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+body,
+main {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+main {
+  background-color: #f7f5ef;
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+a,
+button,
+footer {
+  font-family: "Apercu Medium";
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+p,
+ul li {
+  font-family: "Apercu Light";
+}
+
+button {
+  padding: 1em 3em;
+  width: 200px;
+  outline: none;
+  background-color: #181818;
+  border-radius: 2px;
+  border: 0px;
+  color: #f7f5ef;
+  transition: 300ms ease;
+}
+
+button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
 .property-listings {
   width: 100%;
   display: flex;
@@ -18,6 +68,7 @@
   align-items: stretch;
   align-content: stretch;
   border-radius: 10px;
+  border: 1px solid #d5d5d5;
   box-shadow: 0px 10px 50px #dadada;
 }
 
@@ -102,6 +153,48 @@
   display: flex;
 }
 
+.search-property-form__field-wrapper input,
+.login-form__field-wrapper input,
+.new-property-form__field-wrapper input,
+.sign-up-form__field-wrapper input,
+.update-reservation-form__field-wrapper input {
+  margin: 0;
+  outline: none;
+  border: 0px;
+  border-radius: 5px;
+  padding: 1em;
+  border: 1px solid #d0d0d0;
+}
+
+.search-property-form__field-wrapper:nth-of-type(2),
+.login-form__field-wrapper:nth-of-type(2),
+.new-property-form__field-wrapper:nth-of-type(2),
+.sign-up-form__field-wrapper:nth-of-type(2),
+.update-reservation-form__field-wrapper:nth-of-type(2) {
+  margin-top: 1em;
+}
+
+.search-property-form__field-wrapper:nth-of-type(1), .search-property-form__field-wrapper:nth-of-type(2),
+.login-form__field-wrapper:nth-of-type(1),
+.login-form__field-wrapper:nth-of-type(2),
+.new-property-form__field-wrapper:nth-of-type(1),
+.new-property-form__field-wrapper:nth-of-type(2),
+.sign-up-form__field-wrapper:nth-of-type(1),
+.sign-up-form__field-wrapper:nth-of-type(2),
+.update-reservation-form__field-wrapper:nth-of-type(1),
+.update-reservation-form__field-wrapper:nth-of-type(2) {
+  height: 3rem;
+}
+
+.search-property-form__field-wrapper:last-of-type,
+.login-form__field-wrapper:last-of-type,
+.new-property-form__field-wrapper:last-of-type,
+.sign-up-form__field-wrapper:last-of-type,
+.update-reservation-form__field-wrapper:last-of-type {
+  margin-top: 1.5em;
+  flex-direction: column;
+}
+
 .search-property-form label,
 .login-form label,
 .new-property-form label,
@@ -130,19 +223,21 @@
 .update-reservation-form select,
 .update-reservation-form input,
 .update-reservation-form label {
-  margin: 5px 5px;
   width: 100%;
 }
 
-.page-header__user-links ul {
-  list-style: none;
-  display: flex;
+body,
+main {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.page-header__user-links ul li {
-  padding: 0;
-  margin: 0 10px;
-  cursor: pointer;
+html,
+body,
+main {
+  background-color: #f7f5ef;
+  height: 100%;
 }
 
 h1,
@@ -152,6 +247,11 @@ a,
 button,
 footer {
   font-family: "Apercu Medium";
+}
+
+button,
+a {
+  cursor: pointer;
 }
 
 p,
@@ -166,13 +266,49 @@ button {
   background-color: #181818;
   border-radius: 2px;
   border: 0px;
-  color: #faf9ea;
+  color: #f7f5ef;
   transition: 300ms ease;
 }
 
 button:hover {
   opacity: 0.8;
   cursor: pointer;
+}
+
+.page-header {
+  padding: 0em 1em;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #f7f5ef;
+  border-bottom: 1px solid black;
+}
+
+.page-header__user-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-header__user-links a {
+  font-family: "Anton";
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
+.page-header__user-links ul {
+  list-style: none;
+  display: flex;
+}
+
+.page-header__user-links ul li {
+  padding: 0;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.page-header__user-links ul li:last-of-type {
+  font-weight: 800;
 }
 
 @font-face {
