@@ -1,5 +1,4 @@
 $(() => {
-
   const $logInForm = $(`
   <form id="login-form" class="login-form">
       <p>Login</p>
@@ -20,26 +19,22 @@ $(() => {
 
   window.$logInForm = $logInForm;
 
-  $logInForm.on('submit', function(event) {
+  $logInForm.on("submit", function (event) {
     event.preventDefault();
 
     const data = $(this).serialize();
-    logIn(data)
-      .then(json => {
-        console.log(json);
-        if (!json.user) {
-          views_manager.show('error', 'Failed to login');
-          return;
-        }
-        console.log(json.user);
-        header.update(json.user);
-        views_manager.show('listings');
-      });
+    logIn(data).then(json => {
+      if (!json.user) {
+        views_manager.show("error", "Failed to login");
+        return;
+      }
+      header.update(json.user);
+      views_manager.show("listings");
+    });
   });
 
-  $('body').on('click', '#login-form__cancel', function() {
-    views_manager.show('listings');
+  $("body").on("click", "#login-form__cancel", function () {
+    views_manager.show("listings");
     return false;
   });
-      
 });

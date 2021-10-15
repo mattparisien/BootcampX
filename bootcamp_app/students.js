@@ -1,9 +1,9 @@
-const { Pool } = require('pg');
+const { Pool } = require("pg");
 const pool = new Pool({
-  user: 'vagrant',
-  password: '123',
-  host: 'localhost',
-  database: 'bootcampx'
+  user: "vagrant",
+  password: "123",
+  host: "localhost",
+  database: "bootcampx",
 });
 const userInput = process.argv.slice(2);
 
@@ -17,10 +17,13 @@ const queryStr = `
 
 const values = [`%${userInput[0]}%`, `${userInput[1]}` || 5];
 
-pool.query(queryStr, values) 
-.then(res => {
-  res.rows.forEach((user) => {
-    console.log(`${user.name} has an id of ${user.id} and was in the ${user.cohort} cohort`);
-  }) 
-})
-.catch(error => console.error('error', error.stack));
+pool
+  .query(queryStr, values)
+  .then(res => {
+    res.rows.forEach(user => {
+      console.log(
+        `${user.name} has an id of ${user.id} and was in the ${user.cohort} cohort`
+      );
+    });
+  })
+  .catch(error => console.error("error", error.stack));

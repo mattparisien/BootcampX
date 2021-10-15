@@ -1,11 +1,11 @@
-const { Pool } = require('pg');
+const { Pool } = require("pg");
 const userInput = process.argv.slice(2);
 
 const pool = new Pool({
-  user: 'vagrant',
-  password: '123',
-  host: 'localhost',
-  database: 'bootcampx'
+  user: "vagrant",
+  password: "123",
+  host: "localhost",
+  database: "bootcampx",
 });
 
 const queryStr = `
@@ -20,10 +20,11 @@ const queryStr = `
 
 const values = [`${userInput[0]}`];
 
-pool.query(queryStr, values)
-.then(res => {
-  res.rows.forEach(ass_request => {
-    console.log(`${ass_request.cohorts}: ${ass_request.teacher}`)
+pool
+  .query(queryStr, values)
+  .then(res => {
+    res.rows.forEach(ass_request => {
+      console.log(`${ass_request.cohorts}: ${ass_request.teacher}`);
+    });
   })
-})
-.catch(error => console.error('error', error.stack));
+  .catch(error => console.error("error", error.stack));
