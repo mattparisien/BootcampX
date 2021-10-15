@@ -38,13 +38,6 @@ function getAllListings(params) {
   });
 }
 
-function getAllReservations() {
-  let url = "/api/reservations";
-  return $.ajax({
-    url,
-  });
-}
-
 const submitProperty = function (data) {
   return $.ajax({
     method: "POST",
@@ -60,6 +53,13 @@ const submitReservation = function (data) {
     data,
   });
 };
+
+function getFulfilledReservations() {
+  let url = "/api/reservations";
+  return $.ajax({
+    url,
+  });
+}
 
 function getUpcomingReservations() {
   let url = "/api/reservations/upcoming";

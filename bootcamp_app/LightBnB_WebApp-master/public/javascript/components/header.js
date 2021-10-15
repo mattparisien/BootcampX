@@ -11,8 +11,8 @@ $(() => {
     if (!user) {
       userLinks = `
       <nav id="page-header__user-links" class="page-header__user-links">
+      <a>Lightbnb</a>
         <ul>
-          <li class="home">🏠</li>
           <li class="search_button">Search</li>
           <li class="login_button">Log In</li>
           <li class="sign-up_button">Sign Up</li>
@@ -46,7 +46,7 @@ $(() => {
 
   $("header").on("click", ".my_reservations_button", function () {
     propertyListings.clearListings();
-    getUpcomingReservations()
+    getFulfilledReservations()
       .then(function (json) {
         propertyListings.addProperties(json.reservations, { upcoming: false });
         getUpcomingReservations().then(json => {

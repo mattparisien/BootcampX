@@ -84,7 +84,7 @@ exports.addUser = addUser;
  * @param {string} guest_id The id of the user.
  * @return {Promise<[{}]>} A promise to the reservations.
  */
-const getAllReservations = function (guest_id, limit = 10) {
+const getFulfilledReservations = function (guest_id, limit = 10) {
   const text = `
     SELECT properties.*, reservations.*, AVG(rating) as average_rating
     FROM reservations
@@ -102,7 +102,7 @@ const getAllReservations = function (guest_id, limit = 10) {
     .catch(err => console.log(err));
 };
 
-exports.getAllReservations = getAllReservations;
+exports.getFulfilledReservations = getFulfilledReservations;
 
 /// Properties
 
@@ -250,6 +250,7 @@ exports.addReservation = addReservation;
 //  Gets upcoming reservations
 //
 const getUpcomingReservations = function (guest_id, limit = 10) {
+  console.log("in heresss!");
   const text = `
   SELECT properties.*, reservations.*, avg(rating) as average_rating
   FROM reservations
@@ -270,7 +271,6 @@ const getUpcomingReservations = function (guest_id, limit = 10) {
 exports.getUpcomingReservations = getUpcomingReservations;
 
 const getIndividualReservation = function (reservationId) {
-  console.log("in here!");
   const text = `
   SELECT properties.*, reservations.*, avg(rating) as average_rating
   FROM reservations

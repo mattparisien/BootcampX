@@ -1,13 +1,37 @@
+#login-form,
+#sign-up-form {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  bottom: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: $shadow;
+  border-radius: 10px;
+  border: 1px solid $grey;
+
+  p {
+    font-family: $brand;
+    font-size: 3.5rem;
+    margin-top: 0;
+  }
+}
+
 .search-property-form,
 .login-form,
 .new-property-form,
 .sign-up-form,
 .update-reservation-form {
+  padding: 3em;
   max-width: 400px;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center;
+  justify-content: center;
   margin: auto;
+
+  height: 300px;
 
   &__field-wrapper {
     width: 100%;
@@ -35,6 +59,10 @@
   &__field-wrapper:last-of-type {
     margin-top: 1.5em;
     flex-direction: column;
+
+    button {
+      width: 100%;
+    }
   }
 
   label {

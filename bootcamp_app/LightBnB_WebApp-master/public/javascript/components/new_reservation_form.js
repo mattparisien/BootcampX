@@ -157,7 +157,6 @@ $(() => {
   `);
 
   $newReservationForm.on("submit", function (event) {
-    console.log("hi");
     event.preventDefault();
     views_manager.show("none");
     const formArray = $(this).serializeArray();

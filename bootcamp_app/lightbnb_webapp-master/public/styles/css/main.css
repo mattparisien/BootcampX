@@ -9,8 +9,13 @@ main {
 html,
 body,
 main {
-  background-color: #f7f5ef;
-  height: 100%;
+  background-color: #faf9f5;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
 }
 
 h1,
@@ -29,7 +34,7 @@ a {
 
 p,
 ul li {
-  font-family: "Apercu Light";
+  font-family: "Apercu Regular";
 }
 
 button {
@@ -39,7 +44,7 @@ button {
   background-color: #181818;
   border-radius: 2px;
   border: 0px;
-  color: #f7f5ef;
+  color: #faf9f5;
   transition: 300ms ease;
 }
 
@@ -59,7 +64,7 @@ button:hover {
   margin: 20px 0;
   padding: 2em;
   width: 100%;
-  max-width: 600px;
+  max-width: 50rem;
   height: 400px;
   box-sizing: border-box;
   display: flex;
@@ -132,16 +137,40 @@ button:hover {
   }
 }
 
+#login-form,
+#sign-up-form {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  bottom: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 10px 50px #dadada;
+  border-radius: 10px;
+  border: 1px solid #d5d5d5;
+}
+
+#login-form p,
+#sign-up-form p {
+  font-family: "Anton";
+  font-size: 3.5rem;
+  margin-top: 0;
+}
+
 .search-property-form,
 .login-form,
 .new-property-form,
 .sign-up-form,
 .update-reservation-form {
+  padding: 3em;
   max-width: 400px;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center;
+  justify-content: center;
   margin: auto;
+  height: 300px;
 }
 
 .search-property-form__field-wrapper,
@@ -195,6 +224,14 @@ button:hover {
   flex-direction: column;
 }
 
+.search-property-form__field-wrapper:last-of-type button,
+.login-form__field-wrapper:last-of-type button,
+.new-property-form__field-wrapper:last-of-type button,
+.sign-up-form__field-wrapper:last-of-type button,
+.update-reservation-form__field-wrapper:last-of-type button {
+  width: 100%;
+}
+
 .search-property-form label,
 .login-form label,
 .new-property-form label,
@@ -236,8 +273,13 @@ main {
 html,
 body,
 main {
-  background-color: #f7f5ef;
-  height: 100%;
+  background-color: #faf9f5;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
 }
 
 h1,
@@ -256,7 +298,7 @@ a {
 
 p,
 ul li {
-  font-family: "Apercu Light";
+  font-family: "Apercu Regular";
 }
 
 button {
@@ -266,7 +308,7 @@ button {
   background-color: #181818;
   border-radius: 2px;
   border: 0px;
-  color: #f7f5ef;
+  color: #faf9f5;
   transition: 300ms ease;
 }
 
@@ -280,7 +322,7 @@ button:hover {
   position: sticky;
   top: 0;
   left: 0;
-  background-color: #f7f5ef;
+  background-color: #faf9f5;
   border-bottom: 1px solid black;
 }
 

@@ -37,6 +37,7 @@ $(() => {
       });
       $(".delete-button").on("click", function () {
         const idData = $(this).attr("id").substring(16);
+        deleteReservation(idData);
         $($(this).closest("article")).remove();
       });
     }

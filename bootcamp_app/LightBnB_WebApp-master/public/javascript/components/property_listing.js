@@ -9,7 +9,7 @@ $(() => {
         </section>
         <section class="property-listing__details">
           <h3 class="property-listing__title">${property.title}</h3>
-          <ul class="property-listing__details">
+          <ul class="property-listing__specificdetails">
             <li>number_of_bedrooms: ${property.number_of_bedrooms}</li>
             <li>number_of_bathrooms: ${property.number_of_bathrooms}</li>
             <li>parking_spaces: ${property.parking_spaces}</li>
@@ -22,12 +22,15 @@ $(() => {
               : `<button id="reserve-property-${property.id}" class="reserve-button">Reserve</button>`
           }
           <footer class="property-listing__footer">
+          <div class="rating_price_container">
             <div class="property-listing__rating">${
               Math.round(property.average_rating * 100) / 100
             }/5 stars</div>
             <div class="property-listing__price">$${
               property.cost_per_night / 100.0
             }/night</div>
+            </div>
+            <div class="update_delete_container">
             ${
               isReservation.upcoming
                 ? `<button id="update-property-${property.id}" class="update-button">Update</button>
@@ -35,6 +38,7 @@ $(() => {
               `
                 : ``
             }
+            </div>
           </footer>
         </section>
       </article>
