@@ -291,7 +291,31 @@ exports.getIndividualReservation = getIndividualReservation;
 //
 //  Updates an existing reservation with new information
 //
-const updateReservation = function (reservationId, newReservationData) {};
+const updateReservation = function (reservationData) {
+  // base string
+  let text = `UPDATE reservations SET `;
+  const values = [];
+  if (reservationData.start_date) {
+    values.push(reservationData.start_date);
+    text += `start_date = $1`;
+    if (reservationData.end_date) {
+      values.push(reservationData.end_date);
+      text += `, end_date = $2`;
+    }
+  } else {
+    values.push(reservationData.end_date);
+    text += `end_date = $1`;
+  }
+  text += ` WHERE id = $${values.length + 1} RETURNING *;`;
+  values.push(reservationData.reservation_id);
+  console.log(text);
+  return pool
+    .query(text, values)
+    .then(res => res.rows[0])
+    .catch(err => console.error(err));
+};
+
+exports.updateReservation = updateReservation;
 
 //
 //  Deletes an existing reservation
