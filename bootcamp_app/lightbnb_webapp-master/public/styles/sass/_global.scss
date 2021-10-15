@@ -1,12 +1,36 @@
 // Set variables
+$fontlight: "Apercu Light";
+$fontreg: "Apercu Regular";
+$fontmed: "Apercu Medium";
+$black: rgb(24, 24, 24);
+$cream: rgb(250, 249, 234);
 
 h1,
 h2,
-h3 {
-  font-family: $roboto;
+h3,
+a,
+button,
+footer {
+  font-family: $fontmed;
 }
 
 p,
-a {
-  font-family: $playfair;
+ul li {
+  font-family: $fontlight;
+}
+
+button {
+  padding: 1em 3em;
+  width: 200px;
+  outline: none;
+  background-color: $black;
+  border-radius: 2px;
+  border: 0px;
+  color: $cream;
+  transition: 300ms ease;
+
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
 }
