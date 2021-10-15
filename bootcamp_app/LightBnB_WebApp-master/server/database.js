@@ -366,4 +366,22 @@ const addReview = function (review) {
   return pool.query(queryString, queryParams).then(res => res.rows);
 };
 
+const addReview = function (review) {
+  const queryString = `
+    INSERT INTO property_reviews (guest_id, property_id, reservation_id, rating, message) 
+    VALUES ($1, $2, $3, $4, $5)
+    RETURNING *;
+  `;
+  const queryParams = [
+    review.guest_id,
+    review.property_id,
+    review.id,
+    parseInt(review.rating),
+    review.message,
+  ];
+  return pool.query(queryString, queryParams).then(res => res.rows);
+};
+
+exports.addReview = addReview;
+
 exports.addReview = addReview;
