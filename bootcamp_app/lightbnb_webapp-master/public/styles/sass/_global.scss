@@ -7,6 +7,7 @@ $black: rgb(24, 24, 24);
 $grey: rgb(213, 213, 213);
 $cream: rgb(250, 249, 245);
 $shadow: 0px 10px 50px #dadada;
+$blue: rgb(100, 132, 171);
 
 body,
 main {
@@ -15,16 +16,12 @@ main {
   box-sizing: border-box;
 }
 
-html,
-body,
-main {
-  background-color: $cream;
-}
-
 main {
   display: flex;
   align-items: center;
+  flex-direction: column;
   padding: 2rem;
+  margin-top: 56px;
 }
 
 h1,
@@ -50,7 +47,7 @@ button {
   padding: 1em 3em;
   width: 200px;
   outline: none;
-  background-color: $black;
+  background-color: $blue;
   border-radius: 2px;
   border: 0px;
   color: $cream;

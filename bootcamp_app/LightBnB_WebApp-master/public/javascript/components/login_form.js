@@ -3,11 +3,11 @@ $(() => {
   <form id="login-form" class="login-form">
       <p>Login</p>
       <div class="login-form__field-wrapper">
-        <input type="email" name="email" placeholder="Email">
+        <input class="form-control-lg" type="email" name="email" placeholder="Email">
       </div>
 
       <div class="login-form__field-wrapper">
-          <input type="password" name="password" placeholder="Password">
+          <input class="form-control-lg" type="password" name="password" placeholder="Password">
         </div>
 
       <div class="login-form__field-wrapper">

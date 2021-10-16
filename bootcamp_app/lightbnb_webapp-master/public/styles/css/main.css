@@ -6,16 +6,12 @@ main {
   box-sizing: border-box;
 }
 
-html,
-body,
-main {
-  background-color: #faf9f5;
-}
-
 main {
   display: flex;
   align-items: center;
+  flex-direction: column;
   padding: 2rem;
+  margin-top: 56px;
 }
 
 h1,
@@ -41,7 +37,7 @@ button {
   padding: 1em 3em;
   width: 200px;
   outline: none;
-  background-color: #181818;
+  background-color: #6484ab;
   border-radius: 2px;
   border: 0px;
   color: #faf9f5;
@@ -112,17 +108,14 @@ button:hover {
   order: 3;
 }
 
-.property-listing__footer .update_delete_container {
+.property-listing__footer .footer_btns {
   display: flex;
   margin-top: 1em;
+  flex-wrap: wrap;
 }
 
-.property-listing__footer .update_delete_container * {
+.property-listing__footer .footer_btns * {
   width: auto;
-}
-
-.property-listing__footer .update_delete_container .delete-button {
-  margin-left: 1em;
 }
 
 .property-listing .review_details {
@@ -160,6 +153,7 @@ button:hover {
   box-shadow: 0px 10px 50px #dadada;
   border-radius: 10px;
   border: 1px solid #d5d5d5;
+  height: 500px;
 }
 
 #login-form p,
@@ -181,7 +175,7 @@ button:hover {
   align-items: center;
   justify-content: center;
   margin: auto;
-  height: 300px;
+  height: 500px;
 }
 
 .search-property-form__field-wrapper,
@@ -198,7 +192,7 @@ button:hover {
 .new-property-form__field-wrapper input,
 .sign-up-form__field-wrapper input,
 .update-reservation-form__field-wrapper input {
-  margin: 0;
+  margin-bottom: 1em;
   outline: none;
   border: 0px;
   border-radius: 5px;
@@ -231,7 +225,6 @@ button:hover {
 .new-property-form__field-wrapper:last-of-type,
 .sign-up-form__field-wrapper:last-of-type,
 .update-reservation-form__field-wrapper:last-of-type {
-  margin-top: 1.5em;
   flex-direction: column;
 }
 
@@ -281,16 +274,12 @@ main {
   box-sizing: border-box;
 }
 
-html,
-body,
-main {
-  background-color: #faf9f5;
-}
-
 main {
   display: flex;
   align-items: center;
+  flex-direction: column;
   padding: 2rem;
+  margin-top: 56px;
 }
 
 h1,
@@ -316,7 +305,7 @@ button {
   padding: 1em 3em;
   width: 200px;
   outline: none;
-  background-color: #181818;
+  background-color: #6484ab;
   border-radius: 2px;
   border: 0px;
   color: #faf9f5;
@@ -329,17 +318,18 @@ button:hover {
 }
 
 .page-header {
-  padding: 0em 1em;
-  position: sticky;
+  padding: 1rem;
+  position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   background-color: #faf9f5;
   border-bottom: 1px solid black;
 }
 
 .page-header__user-links {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
@@ -352,11 +342,13 @@ button:hover {
 .page-header__user-links ul {
   list-style: none;
   display: flex;
+  margin: 0;
+  padding: 0;
 }
 
 .page-header__user-links ul li {
+  margin: 0 1rem;
   padding: 0;
-  margin: 0 10px;
   cursor: pointer;
 }
 

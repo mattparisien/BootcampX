@@ -53,16 +53,13 @@
   &__footer {
     order: 3;
 
-    .update_delete_container {
+    .footer_btns {
       display: flex;
       margin-top: 1em;
+      flex-wrap: wrap;
 
       * {
         width: auto;
-      }
-
-      .delete-button {
-        margin-left: 1em;
       }
     }
   }

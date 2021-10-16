@@ -1,16 +1,17 @@
 @import "global";
 
 .page-header {
-  padding: 0em 1em;
-  position: sticky;
+  padding: 1rem;
+  position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   background-color: $cream;
   border-bottom: 1px solid black;
 
   &__user-links {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     a {
       font-family: "Anton";
@@ -21,9 +22,12 @@
     ul {
       list-style: none;
       display: flex;
+      margin: 0;
+      padding: 0;
+
       li {
+        margin: 0 1rem;
         padding: 0;
-        margin: 0 10px;
         cursor: pointer;
 
         &:last-of-type {

@@ -28,6 +28,7 @@ $(() => {
             <div class="property-listing__price">$${
               property.cost_per_night / 100.0
             }/night</div>
+            <div class="footer_btns">
             ${
               isReservation.upcoming
                 ? `<button id="update-property-${property.id}" class="update-button">Update</button>
@@ -47,6 +48,7 @@ $(() => {
             </span>`
                 : ``
             }
+            </div>
           </footer>
         </section>
       </article>

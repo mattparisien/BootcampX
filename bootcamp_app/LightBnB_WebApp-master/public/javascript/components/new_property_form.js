@@ -1,7 +1,4 @@
 $(() => {
-
-  
-
   const $newPropertyForm = $(`
   <form action="/api/properties" method="post" id="new-property-form" class="new-property-form">
       <div class="new-property-form__field-wrapper">
@@ -90,35 +87,35 @@ $(() => {
   window.$newPropertyForm = $newPropertyForm;
 
   $newPropertyForm.addressfield({
-    json: 'javascript/libraries/addressfield/addressfield.min.json',
+    json: "javascript/libraries/addressfield/addressfield.min.json",
     fields: {
-      country: '#new-property-form__country',
-      locality: '#new-property-form__locality-fields',
-      localityname: '#new-property-form__city',
-      administrativearea: '#new-property-form__state',
-      postalcode: '#new-property-form__zip'
-    }
+      country: "#new-property-form__country",
+      locality: "#new-property-form__locality-fields",
+      localityname: "#new-property-form__city",
+      administrativearea: "#new-property-form__state",
+      postalcode: "#new-property-form__zip",
+    },
   });
 
-  $newPropertyForm.on('submit', function (event) {
+  $newPropertyForm.on("submit", function (event) {
+    console.log(event);
     event.preventDefault();
 
-    views_manager.show('none');
+    views_manager.show("none");
 
     const data = $(this).serialize();
     submitProperty(data)
-    .then(() => {
-      views_manager.show('listings');
-    })
-    .catch((error) => {
-      console.error(error);
-      views_manager.show('listings');
-    })
+      .then(() => {
+        views_manager.show("listings");
+      })
+      .catch(error => {
+        console.error(error);
+        views_manager.show("listings");
+      });
   });
 
-  $('body').on('click', '#property-form__cancel', function() {
-    views_manager.show('listings');
+  $("body").on("click", "#property-form__cancel", function () {
+    views_manager.show("listings");
     return false;
   });
-  
 });

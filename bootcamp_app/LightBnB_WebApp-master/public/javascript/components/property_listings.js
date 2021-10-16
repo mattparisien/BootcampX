@@ -37,9 +37,8 @@ $(() => {
       });
       $(".delete-button").on("click", function () {
         const idData = $(this).attr("id").substring(16);
-        deleteReservation(idData)
-          .then(() => console.log("Success!"))
-          .catch(err => console.error(err));
+        deleteReservation(idData);
+        $(this).closest("article").remove();
       });
       $(".add-review-button").on("click", function () {
         const idData = $(this).attr("id").substring(11);

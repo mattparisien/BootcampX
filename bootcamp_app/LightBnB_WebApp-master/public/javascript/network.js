@@ -104,11 +104,3 @@ const submitReview = function (data) {
     data,
   });
 };
-
-const submitReview = function (data) {
-  return $.ajax({
-    method: "POST",
-    url: `api/reviews/${data.reservationId}`,
-    data,
-  });
-};

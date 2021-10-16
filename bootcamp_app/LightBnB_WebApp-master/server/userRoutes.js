@@ -7,7 +7,7 @@ module.exports = function (router, database) {
     user.password = bcrypt.hashSync(user.password, 12);
     database
       .addUser(user)
-      .then((user) => {
+      .then(user => {
         if (!user) {
           res.send({ error: "error" });
           return;
@@ -15,7 +15,7 @@ module.exports = function (router, database) {
         req.session.userId = user.id;
         res.send("🤗");
       })
-      .catch((e) => res.send(e));
+      .catch(e => res.send(e));
   });
 
   /**
@@ -24,7 +24,7 @@ module.exports = function (router, database) {
    * @param {String} password encrypted
    */
   const login = function (email, password) {
-    return database.getUserWithEmail(email).then((user) => {
+    return database.getUserWithEmail(email).then(user => {
       if (bcrypt.compareSync(password, user.password)) {
         return user;
       }
@@ -36,7 +36,7 @@ module.exports = function (router, database) {
   router.post("/login", (req, res) => {
     const { email, password } = req.body;
     login(email, password)
-      .then((user) => {
+      .then(user => {
         if (!user) {
           res.send({ error: "error" });
           return;
@@ -44,7 +44,7 @@ module.exports = function (router, database) {
         req.session.userId = user.id;
         res.send({ user: { name: user.name, email: user.email, id: user.id } });
       })
-      .catch((e) => res.send(e));
+      .catch(e => res.send(e));
   });
 
   router.post("/logout", (req, res) => {
@@ -61,7 +61,7 @@ module.exports = function (router, database) {
 
     database
       .getUserWithId(userId)
-      .then((user) => {
+      .then(user => {
         if (!user) {
           res.send({ error: "no user with that id" });
           return;
@@ -69,7 +69,7 @@ module.exports = function (router, database) {
 
         res.send({ user: { name: user.name, email: user.email, id: userId } });
       })
-      .catch((e) => res.send(e));
+      .catch(e => res.send(e));
   });
 
   return router;

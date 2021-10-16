@@ -10,6 +10,7 @@
   box-shadow: $shadow;
   border-radius: 10px;
   border: 1px solid $grey;
+  height: 500px;
 
   p {
     font-family: $brand;
@@ -30,15 +31,14 @@
   align-items: center;
   justify-content: center;
   margin: auto;
-
-  height: 300px;
+  height: 500px;
 
   &__field-wrapper {
     width: 100%;
     display: flex;
 
     input {
-      margin: 0;
+      margin-bottom: 1em;
       outline: none;
       border: 0px;
       border-radius: 5px;
@@ -57,7 +57,6 @@
   }
 
   &__field-wrapper:last-of-type {
-    margin-top: 1.5em;
     flex-direction: column;
 
     button {
