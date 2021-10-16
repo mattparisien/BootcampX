@@ -52,11 +52,13 @@
 
   &__footer {
     order: 3;
+    width: 100%;
 
-    .footer_btns {
+    .btns-container {
       display: flex;
       margin-top: 1em;
       flex-wrap: wrap;
+      justify-content: space-between;
 
       * {
         width: auto;

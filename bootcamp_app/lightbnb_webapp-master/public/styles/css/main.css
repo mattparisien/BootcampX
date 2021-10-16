@@ -112,15 +112,17 @@ button:hover {
 
 .property-listing__footer {
   order: 3;
+  width: 100%;
 }
 
-.property-listing__footer .footer_btns {
+.property-listing__footer .btns-container {
   display: flex;
   margin-top: 1em;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.property-listing__footer .footer_btns * {
+.property-listing__footer .btns-container * {
   width: auto;
 }
 
