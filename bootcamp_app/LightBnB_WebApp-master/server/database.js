@@ -118,7 +118,7 @@ exports.getFulfilledReservations = getFulfilledReservations;
 const getAllProperties = function (options, limit = 10) {
   const values = [];
   let text = `
-  SELECT properties.*, avg(property_reviews.rating) as average_rating, count(property_reviews.rating) as review_count
+  SELECT properties.*, AVG(property_reviews.rating) as average_rating, COUNT(property_reviews.rating) as review_count
   FROM properties
   LEFT JOIN property_reviews ON properties.id = property_id
   `;
@@ -156,8 +156,9 @@ const getAllProperties = function (options, limit = 10) {
   text += `GROUP BY properties.id`;
 
   if (options.minimum_rating) {
-    values.push(options.minimum_rating);
-    text += `HAVING avg(property_reviews.rating) >= $${values.length} `;
+    text += ` HAVING `;
+    values.push(parseInt(options.minimum_rating));
+    text += `avg(property_reviews.rating) >= $${values.length} `;
   }
 
   values.push(limit);
@@ -250,7 +251,7 @@ exports.addReservation = addReservation;
 const getUpcomingReservations = function (guest_id, limit = 10) {
   console.log("in heresss!");
   const text = `
-  SELECT properties.*, reservations.*, avg(rating) as average_rating
+  SELECT properties.*, reservations.*, AVG(rating) as average_rating
   FROM reservations
   JOIN properties ON reservations.property_id = properties.id
   JOIN property_reviews ON properties.id = property_reviews.property_id 
@@ -270,7 +271,7 @@ exports.getUpcomingReservations = getUpcomingReservations;
 
 const getIndividualReservation = function (reservationId) {
   const text = `
-  SELECT properties.*, reservations.*, avg(rating) as average_rating
+  SELECT properties.*, reservations.*, AVG(rating) as average_rating
   FROM reservations
   JOIN properties ON reservations.property_id = properties.id
   JOIN property_reviews ON properties.id = property_reviews.property_id 
