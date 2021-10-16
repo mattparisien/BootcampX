@@ -1,6 +1,6 @@
 $(() => {
   const $newReservationForm = $(`
-  <form action="/api/reservations" method="post" id="new-reservation-form" class="new-reservation-form">
+  <form action="/api/reservations" method="post" id="new-reservation-form" class="new-reservation-form form-control">
       <h3 id="new-reservation-header">Start Date</h3>
       <div class="new-reservation-form__field_wrapper">
         <label for="new-reservation-form__start-date-day">Day</label>

@@ -11,7 +11,7 @@ $(() => {
     if (!user) {
       userLinks = `
       <nav id="page-header__user-links" class="page-header__user-links">
-      <a>Lightbnb</a>
+      <a class="brand" href="/">Lightbnb</a>
         <ul>
           <li class="search_button">Search</li>
           <li class="login_button">Log In</li>
@@ -22,8 +22,8 @@ $(() => {
     } else {
       userLinks = `
       <nav id="page-header__user-links" class="page-header__user-links">
+      <a class="brand" href="/">Lightbnb</a>
         <ul>
-          <li class="home">🏠</li>
           <li class="search_button">Search</li>
           <li>${user.name}</li>
           <li class="create_listing_button">Create Listing</li>
@@ -60,6 +60,7 @@ $(() => {
   $("header").on("click", ".my_listing_button", function () {
     propertyListings.clearListings();
     getAllListings(`owner_id=${currentUser.id}`).then(function (json) {
+      console.log(json);
       propertyListings.addProperties(json.properties);
       views_manager.show("listings");
     });

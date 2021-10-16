@@ -1,6 +1,6 @@
 $(() => {
   const $signUpForm = $(`
-  <form id="sign-up-form" class="sign-up-form">
+  <form id="sign-up-form" class="sign-up-form form-control">
         <p>Sign Up</p>
 
         <div class="sign-up-form__field-wrapper">

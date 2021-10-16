@@ -1,6 +1,6 @@
 $(() => {
   const $logInForm = $(`
-  <form id="login-form" class="login-form">
+  <form id="login-form" class="login-form form-control">
       <p>Login</p>
       <div class="login-form__field-wrapper">
         <input class="form-control-lg" type="email" name="email" placeholder="Email">

@@ -11,12 +11,13 @@
 
   &__user-links {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     a {
-      font-family: "Anton";
-      text-transform: uppercase;
+      font-family: $brand;
       font-size: 2rem;
+      text-decoration: none;
+      color: $blue;
     }
 
     ul {

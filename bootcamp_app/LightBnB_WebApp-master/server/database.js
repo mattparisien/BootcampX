@@ -118,10 +118,12 @@ exports.getFulfilledReservations = getFulfilledReservations;
 const getAllProperties = function (options, limit = 10) {
   const values = [];
   let text = `
-  SELECT properties.*, AVG(property_reviews.rating) as average_rating, COUNT(property_reviews.rating) as review_count
+  SELECT properties.*, avg(property_reviews.rating) as average_rating, count(property_reviews.rating) as review_count
   FROM properties
   LEFT JOIN property_reviews ON properties.id = property_id
   `;
+  // check what search parameter were inputted by the user and use conditionals
+  // to place the WHERE/ AND statements in the query
 
   if (options.city) {
     values.push(`%${options.city}%`);
@@ -156,9 +158,8 @@ const getAllProperties = function (options, limit = 10) {
   text += `GROUP BY properties.id`;
 
   if (options.minimum_rating) {
-    text += ` HAVING `;
-    values.push(parseInt(options.minimum_rating));
-    text += `avg(property_reviews.rating) >= $${values.length} `;
+    values.push(options.minimum_rating);
+    text += `HAVING avg(property_reviews.rating) >= $${values.length} `;
   }
 
   values.push(limit);
@@ -249,7 +250,6 @@ exports.addReservation = addReservation;
 //  Gets upcoming reservations
 //
 const getUpcomingReservations = function (guest_id, limit = 10) {
-  console.log("in heresss!");
   const text = `
   SELECT properties.*, reservations.*, AVG(rating) as average_rating
   FROM reservations
@@ -307,7 +307,7 @@ const updateReservation = function (reservationData) {
   }
   text += ` WHERE id = $${values.length + 1} RETURNING *;`;
   values.push(reservationData.reservation_id);
-  console.log(text);
+
   return pool
     .query(text, values)
     .then(res => res.rows[0])

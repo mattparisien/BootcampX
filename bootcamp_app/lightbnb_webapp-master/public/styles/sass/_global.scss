@@ -2,7 +2,7 @@
 $fontlight: "Apercu Light";
 $fontreg: "Apercu Regular";
 $fontmed: "Apercu Medium";
-$brand: "Anton";
+$brand: "Pacifico";
 $black: rgb(24, 24, 24);
 $grey: rgb(213, 213, 213);
 $cream: rgb(250, 249, 245);
@@ -14,6 +14,12 @@ main {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html,
+body,
+main {
+  height: 100%;
 }
 
 main {
@@ -36,6 +42,7 @@ footer {
 button,
 a {
   cursor: pointer;
+  transition: 300ms ease;
 }
 
 p,
@@ -51,7 +58,6 @@ button {
   border-radius: 2px;
   border: 0px;
   color: $cream;
-  transition: 300ms ease;
 
   &:hover {
     opacity: 0.8;

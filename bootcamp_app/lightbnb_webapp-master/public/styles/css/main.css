@@ -1,9 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 body,
 main {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html,
+body,
+main {
+  height: 100%;
 }
 
 main {
@@ -26,6 +32,7 @@ footer {
 button,
 a {
   cursor: pointer;
+  transition: 300ms ease;
 }
 
 p,
@@ -41,7 +48,6 @@ button {
   border-radius: 2px;
   border: 0px;
   color: #faf9f5;
-  transition: 300ms ease;
 }
 
 button:hover {
@@ -143,24 +149,24 @@ button:hover {
 
 #login-form,
 #sign-up-form {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  bottom: 50%;
-  margin-left: auto;
-  margin-right: auto;
   box-shadow: 0px 10px 50px #dadada;
   border-radius: 10px;
   border: 1px solid #d5d5d5;
-  height: 500px;
+  padding: 3em;
 }
 
 #login-form p,
 #sign-up-form p {
-  font-family: "Anton";
+  font-family: "Pacifico";
   font-size: 3.5rem;
   margin-top: 0;
+}
+
+#login-form input,
+#login-form button,
+#sign-up-form input,
+#sign-up-form button {
+  margin-top: 1em;
 }
 
 .search-property-form,
@@ -185,39 +191,6 @@ button:hover {
 .update-reservation-form__field-wrapper {
   width: 100%;
   display: flex;
-}
-
-.search-property-form__field-wrapper input,
-.login-form__field-wrapper input,
-.new-property-form__field-wrapper input,
-.sign-up-form__field-wrapper input,
-.update-reservation-form__field-wrapper input {
-  margin-bottom: 1em;
-  outline: none;
-  border: 0px;
-  border-radius: 5px;
-  padding: 1em;
-  border: 1px solid #d0d0d0;
-}
-
-.search-property-form__field-wrapper:nth-of-type(2),
-.login-form__field-wrapper:nth-of-type(2),
-.new-property-form__field-wrapper:nth-of-type(2),
-.sign-up-form__field-wrapper:nth-of-type(2),
-.update-reservation-form__field-wrapper:nth-of-type(2) {
-  margin-top: 1em;
-}
-
-.search-property-form__field-wrapper:nth-of-type(1), .search-property-form__field-wrapper:nth-of-type(2),
-.login-form__field-wrapper:nth-of-type(1),
-.login-form__field-wrapper:nth-of-type(2),
-.new-property-form__field-wrapper:nth-of-type(1),
-.new-property-form__field-wrapper:nth-of-type(2),
-.sign-up-form__field-wrapper:nth-of-type(1),
-.sign-up-form__field-wrapper:nth-of-type(2),
-.update-reservation-form__field-wrapper:nth-of-type(1),
-.update-reservation-form__field-wrapper:nth-of-type(2) {
-  height: 3rem;
 }
 
 .search-property-form__field-wrapper:last-of-type,
@@ -274,6 +247,12 @@ main {
   box-sizing: border-box;
 }
 
+html,
+body,
+main {
+  height: 100%;
+}
+
 main {
   display: flex;
   align-items: center;
@@ -294,6 +273,7 @@ footer {
 button,
 a {
   cursor: pointer;
+  transition: 300ms ease;
 }
 
 p,
@@ -309,7 +289,6 @@ button {
   border-radius: 2px;
   border: 0px;
   color: #faf9f5;
-  transition: 300ms ease;
 }
 
 button:hover {
@@ -329,14 +308,15 @@ button:hover {
 
 .page-header__user-links {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
 .page-header__user-links a {
-  font-family: "Anton";
-  text-transform: uppercase;
+  font-family: "Pacifico";
   font-size: 2rem;
+  text-decoration: none;
+  color: #6484ab;
 }
 
 .page-header__user-links ul {

@@ -1,7 +1,6 @@
 $(() => {
-
   const $searchPropertyForm = $(`
-  <form action="/properties" method="get" id="search-property-form" class="search-property-form">
+  <form action="/properties" method="get" id="search-property-form" class="search-property-form form-control">
       <div class="search-property-form__field-wrapper">
         <label for="search-property-form__city">City</label>
         <input type="text" name="city" placeholder="City" id="search-property-form__city">
@@ -24,22 +23,21 @@ $(() => {
           <a id="search-property-form__cancel" href="#">Cancel</a>
       </div>
     </form>
-  `)
+  `);
   window.$searchPropertyForm = $searchPropertyForm;
 
-  $searchPropertyForm.on('submit', function(event) {
+  $searchPropertyForm.on("submit", function (event) {
     event.preventDefault();
     const data = $(this).serialize();
 
-    getAllListings(data).then(function( json ) {
+    getAllListings(data).then(function (json) {
       propertyListings.addProperties(json.properties);
-      views_manager.show('listings');
+      views_manager.show("listings");
     });
   });
 
-  $('body').on('click', '#search-property-form__cancel', function() {
-    views_manager.show('listings');
+  $("body").on("click", "#search-property-form__cancel", function () {
+    views_manager.show("listings");
     return false;
   });
-
 });
