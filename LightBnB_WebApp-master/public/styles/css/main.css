@@ -1,0 +1,358 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+body,
+main {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+main {
+  height: 100%;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem;
+  margin-top: 56px;
+}
+
+h1,
+h2,
+h3,
+a,
+button,
+footer {
+  font-family: "Apercu Medium";
+}
+
+button,
+a {
+  cursor: pointer;
+  transition: 300ms ease;
+}
+
+p,
+ul li {
+  font-family: "Apercu Regular";
+}
+
+button {
+  padding: 1em 3em;
+  width: 200px;
+  outline: none;
+  background-color: #6484ab;
+  border-radius: 2px;
+  border: 0px;
+  color: #faf9f5;
+}
+
+button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.property-listings {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.property-listing {
+  margin: 20px 0;
+  padding: 2em;
+  width: 100%;
+  max-width: 50rem;
+  height: 400px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: stretch;
+  border-radius: 10px;
+  border: 1px solid #d5d5d5;
+  box-shadow: 0px 10px 50px #dadada;
+}
+
+.property-listing__title {
+  font-size: 1.5rem;
+}
+
+.property-listing__preview-image {
+  overflow: hidden;
+  max-width: 50%;
+}
+
+.property-listing__preview-image img {
+  height: 100%;
+}
+
+.property-listing__details {
+  text-align: left;
+  width: 50%;
+  margin-left: 2em;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.property-listing__specificdetails {
+  width: 100%;
+  list-style-type: none;
+  text-align: left;
+  padding: 0;
+}
+
+.property-listing__footer {
+  order: 3;
+  width: 100%;
+}
+
+.property-listing__footer .btns-container {
+  display: flex;
+  margin-top: 1em;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.property-listing__footer .btns-container * {
+  width: auto;
+}
+
+.property-listing .review_details {
+  font-weight: 700;
+  color: green;
+  transition: all 300ms ease-in-out;
+}
+
+.property-listing .review_details:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+.property-listing .reserve-button {
+  order: 4;
+  width: 100%;
+}
+
+@media screen and (max-width: 400px) {
+  .property-listing {
+    flex-direction: column;
+    height: 400px;
+  }
+}
+
+#login-form,
+#sign-up-form {
+  box-shadow: 0px 10px 50px #dadada;
+  border-radius: 10px;
+  border: 1px solid #d5d5d5;
+  padding: 3em;
+}
+
+#login-form p,
+#sign-up-form p {
+  font-family: "Pacifico";
+  font-size: 3.5rem;
+  margin-top: 0;
+}
+
+#login-form input,
+#login-form button,
+#sign-up-form input,
+#sign-up-form button {
+  margin-top: 1em;
+}
+
+.search-property-form,
+.login-form,
+.new-property-form,
+.sign-up-form,
+.update-reservation-form {
+  padding: 3em;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  height: 500px;
+}
+
+.search-property-form__field-wrapper,
+.login-form__field-wrapper,
+.new-property-form__field-wrapper,
+.sign-up-form__field-wrapper,
+.update-reservation-form__field-wrapper {
+  width: 100%;
+  display: flex;
+}
+
+.search-property-form__field-wrapper:last-of-type,
+.login-form__field-wrapper:last-of-type,
+.new-property-form__field-wrapper:last-of-type,
+.sign-up-form__field-wrapper:last-of-type,
+.update-reservation-form__field-wrapper:last-of-type {
+  flex-direction: column;
+}
+
+.search-property-form__field-wrapper:last-of-type button,
+.login-form__field-wrapper:last-of-type button,
+.new-property-form__field-wrapper:last-of-type button,
+.sign-up-form__field-wrapper:last-of-type button,
+.update-reservation-form__field-wrapper:last-of-type button {
+  width: 100%;
+}
+
+.search-property-form label,
+.login-form label,
+.new-property-form label,
+.sign-up-form label,
+.update-reservation-form label {
+  display: none;
+}
+
+.search-property-form textarea,
+.search-property-form select,
+.search-property-form input,
+.search-property-form label,
+.login-form textarea,
+.login-form select,
+.login-form input,
+.login-form label,
+.new-property-form textarea,
+.new-property-form select,
+.new-property-form input,
+.new-property-form label,
+.sign-up-form textarea,
+.sign-up-form select,
+.sign-up-form input,
+.sign-up-form label,
+.update-reservation-form textarea,
+.update-reservation-form select,
+.update-reservation-form input,
+.update-reservation-form label {
+  width: 100%;
+}
+
+body,
+main {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+main {
+  height: 100%;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem;
+  margin-top: 56px;
+}
+
+h1,
+h2,
+h3,
+a,
+button,
+footer {
+  font-family: "Apercu Medium";
+}
+
+button,
+a {
+  cursor: pointer;
+  transition: 300ms ease;
+}
+
+p,
+ul li {
+  font-family: "Apercu Regular";
+}
+
+button {
+  padding: 1em 3em;
+  width: 200px;
+  outline: none;
+  background-color: #6484ab;
+  border-radius: 2px;
+  border: 0px;
+  color: #faf9f5;
+}
+
+button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.page-header {
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #faf9f5;
+  border-bottom: 1px solid black;
+}
+
+.page-header__user-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-header__user-links a {
+  font-family: "Pacifico";
+  font-size: 2rem;
+  text-decoration: none;
+  color: #6484ab;
+}
+
+.page-header__user-links ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.page-header__user-links ul li {
+  margin: 0 1rem;
+  padding: 0;
+  cursor: pointer;
+}
+
+.page-header__user-links ul li:last-of-type {
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "Apercu Light";
+  src: url("../assets/Apercu Pro Light.otf");
+}
+
+@font-face {
+  font-family: "Apercu Regular";
+  src: url("../assets/Apercu Pro Regular.otf");
+}
+
+@font-face {
+  font-family: "Apercu Medium";
+  src: url("../assets/Apercu Pro Medium.otf");
+}
+
+.hidden {
+  display: none;
+}
